@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Register for Feedback Session: {{ session.name }}</h2>
+<form method="POST">
+    <label for="user_name">Your Name:</label>
+    <input type="text" id="user_name" name="user_name" required>
+    <button type="submit">Register</button>
+</form>
+{% if participants %}
+    <h3>Participants:</h3>
+    <ul>
+        {% for participant in participants %}
+            <li>{{ participant.name }}</li>
+        {% endfor %}
+    </ul>
+{% endif %}
+
+<script>
+function checkSessionStarted() {
+  fetch("{{ url_for('check_session_started', token=session.token) }}")
+    .then(response => response.json())
+    .then(data => {
+      if (data.started) {
+        window.location.href = "{{ url_for('start_feedback', token=session.token) }}";
+      }
+    });
+}
+
+setInterval(checkSessionStarted, 5000); // Poll every 5 seconds
+</script>
+{% endblock %}
+

@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Welcome to the Feedback App</h2>
+{% if session.admin_authenticated %}
+    <p>You are logged in as an admin. Use the navigation links to manage feedback sessions.</p>
+{% else %}
+    <form method="POST">
+        <label for="secret_key">Enter Admin Secret Key:</label>
+        <input type="password" id="secret_key" name="secret_key" required>
+        <button type="submit">Login</button>
+    </form>
+{% endif %}
+<h3>Instructions:</h3>
+<p>As an admin, you can create feedback sessions for multiple participants. Here's how it works:</p>
+<ol>
+    <li>Log in with the admin secret key.</li>
+    <li>Navigate to "Create Session" to generate a unique session link.</li>
+    <li>Share the session link with participants who need to provide feedback.</li>
+    <li>Monitor feedback submissions and close the session when all feedback has been received.</li>
+    <li>Review the feedback collected from all participants.</li>
+</ol>
+{% endblock %}
+

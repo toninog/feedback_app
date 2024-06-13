@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Session Created</h2>
+<p>Your session has been created successfully. Share the following links with participants and admins:</p>
+<p><strong>Session URL:</strong> <a href="{{ session_url }}">{{ session_url }}</a></p>
+<p><strong>Admin URL:</strong> <a href="{{ admin_url }}">{{ admin_url }}</a></p>
+{% endblock %}
+

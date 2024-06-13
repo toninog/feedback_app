@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Review Feedback for Session: {{ session.name }}</h2>
+{% for recipient, feedbacks in feedback_data.items() %}
+    <h3>Feedback for {{ recipient }}</h3>
+    <a href="{{ url_for('download_feedback', token=session.token, participant_id=feedbacks[0]['recipient_id']) }}">Download as PDF</a>
+    <ul>
+        {% for feedback in feedbacks %}
+            <li>
+                <strong>Feedback:</strong><br>
+                What one thing do you value most in this person? {{ feedback.question_1 }}<br>
+                If you can give this person one piece of advice, what would it be? {{ feedback.question_2 }}
+            </li>
+        {% endfor %}
+    </ul>
+{% endfor %}
+{% endblock %}
+

@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Create Feedback Session</h2>
+<form method="POST">
+    <label for="session_name">Session Name:</label>
+    <input type="text" id="session_name" name="session_name" required>
+    <button type="submit">Create Session</button>
+</form>
+{% endblock %}
+

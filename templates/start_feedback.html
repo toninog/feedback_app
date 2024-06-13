@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Feedback Session for {{ session.token }}</h2>
+<p>This session is now active. Users can submit their feedback.</p>
+<form method="POST" id="feedback-form">
+  {% for participant in participants %}
+    <h3>Feedback for {{ participant.name }}</h3>
+    <label for="question_1_{{ participant.id }}">What one thing do you value most in this person?</label>
+    <textarea id="question_1_{{ participant.id }}" name="question_1_{{ participant.id }}" required></textarea><br>
+    <label for="question_2_{{ participant.id }}">If you can give this person one piece of advice, what would it be?</label>
+    <textarea id="question_2_{{ participant.id }}" name="question_2_{{ participant.id }}" required></textarea><br><br>
+  {% endfor %}
+  
+  <button type="submit">Submit Feedback</button>
+</form>
+
+<script>
+document.getElementById('feedback-form').onsubmit = function() {
+  document.getElementById('feedback-form').style.display = 'none';
+  document.body.insertAdjacentHTML('beforeend', '<p>Thanks for your feedback!</p>');
+}
+</script>
+{% endblock %}
+

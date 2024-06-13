@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Monitor Feedback Submissions</h2>
+<p>Participants registered for this session:</p>
+<ul>
+    {% for participant in participants %}
+        <li>{{ participant.name }} - Feedback Submitted: {{ feedback_data[participant.name].submitted }} / {{ feedback_data[participant.name].total }}</li>
+    {% endfor %}
+</ul>
+<form method="POST" action="{{ url_for('close_session', token=session.token) }}">
+    <button type="submit" {% if not feedback_data|selectattr('submitted', 'eq', feedback_data|map(attribute='total')|list|count) %}disabled{% endif %}>Close Session and Review Feedback</button>
+</form>
+
+<script>
+function checkFeedbackStatus() {
+    fetch("{{ url_for('monitor_feedback', token=session.token) }}")
+        .then(response => response.text())
+        .then(html => {
+            document.body.innerHTML = html;
+        });
+}
+
+setInterval(checkFeedbackStatus, 5000); // Poll every 5 seconds
+</script>
+{% endblock %}
+

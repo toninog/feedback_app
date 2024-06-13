@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Admin: Start Feedback Session</h2>
+<p>Participants registered for this session:</p>
+<ul>
+    {% for participant in participants %}
+        <li>{{ participant.name }}</li>
+    {% endfor %}
+</ul>
+<form method="POST">
+    <button type="submit">Start Session</button>
+</form>
+{% endblock %}
+

@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Feedback for {{ participant.name }}</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    h1, h2 {
+      text-align: center;
+    }
+    .feedback-item {
+      margin-bottom: 20px;
+    }
+    .feedback-item h3 {
+      margin-bottom: 5px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Feedback for {{ participant.name }}</h1>
+  {% for feedback in feedbacks %}
+    <div class="feedback-item">
+      <h3>From Participant</h3>
+      <p><strong>What one thing do you value most in this person?</strong> {{ feedback.question_1 }}</p>
+      <p><strong>If you can give this person one piece of advice, what would it be?</strong> {{ feedback.question_2 }}</p>
+    </div>
+  {% endfor %}
+</body>
+</html>
+

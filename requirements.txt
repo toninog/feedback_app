@@ -1,0 +1,8 @@
+Flask==2.0.1
+Flask-SQLAlchemy==2.5.1
+SQLAlchemy==1.4.36
+WeasyPrint==53.0
+cffi==1.14.6
+Werkzeug==2.0.1
+Flask-Testing==0.8.1
+
