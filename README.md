@@ -1,4 +1,4 @@
-# Simple feedback app for may users
+# Simple feedback app for many users
 
 Run it 
 
